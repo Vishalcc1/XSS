@@ -5,7 +5,7 @@ from csv import reader
 import requests
 import json
 import pandas as pd
-
+#amazon
 def urlParser(append_url,url):
     """Checking for external link and try to avoid it"""
     if(append_url[0:4] == 'http' ):
