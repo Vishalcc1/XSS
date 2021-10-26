@@ -15,8 +15,7 @@ def postMethod(soup):
 
     for form in forms:
         """Check for method type it Get or Post """
-        print("form")
-        if form["method"].strip().upper() == "POST":
+        if form["
             postData = {}
             for inputField in form.find_all(["input", "textarea"]):
                 try:
@@ -29,13 +28,16 @@ def postMethod(soup):
                     continue
             req = EstableSession.estableSession(args)
             try:
-                req.post(crawler.urlParser(form['action'], url), data=postData)
+                req=req.post(crawler.urlParser(form['action'],url),data=postData)
             except:
                 """send request into same url"""
-                req.post(url, data=postData)
+                req=req.post(url, data=postData)
+
             """req hand over to BeautifulSoap"""
-            reqSoup = BeautifulSoup(req.content, 'html.parser')
-            if len(reqSoup.body.findAll(text=re.compile(payload), limit=1)):
-                print("Xss found", url)
+                
+            reqSoup=BeautifulSoup(req.content,'html.parser')
+            # print(reqSoup)
+            if(len(reqSoup.body.findAll(text=re.compile("2005"),limit=1))):
+                print("Xss found",url)
             else:
-                print("Not Found yet")
+                print("Not Found yet",url)
