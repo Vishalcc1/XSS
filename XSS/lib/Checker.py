@@ -2,6 +2,8 @@ from concurrent import futures
 from lib import PostMethod
 from lib import GetMethodForm
 from lib import GetMethod
+
+
 def main(args,urlSoup):
     """Finding the level and then load the payload ..."""
     payload=[args.payload]
