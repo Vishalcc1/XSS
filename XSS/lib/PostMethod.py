@@ -24,8 +24,8 @@ def postMethod(soup):
                         postData[inputField["name"]] = inputField["name"]
                     else:
                         postData[inputField["name"]] = payload
-                except:
-                    continue
+                except KeyError as e:
+                    print("Internal error: " + str(e))
             req = EstableSession.estableSession(args)
             try:
                 req = req.post(crawler.urlParser(form['action'], url), data=postData)
